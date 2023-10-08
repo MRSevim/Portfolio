@@ -22,6 +22,9 @@ body {
   height: 100vh;
   transition: 0.4s;
 }
+.hidden {
+  display: none;
+}
 
 main {
   position: relative;

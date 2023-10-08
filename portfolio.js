@@ -6,33 +6,36 @@ const projects=document.querySelector('.projects-container');
 const contact=document.querySelector('.contact-container');
 const toggleBtnCont= document.querySelector('.toggle-button-container');
 const toggleBtn= document.querySelector('.toggle-button');
-const cssLink =document.querySelector('.light-mode-css-link'); 
-const root =document.querySelector(':root')
+const root = document.querySelector(':root');
 
+
+/*Initial display is set no none to avoid Dom flickering, then I set it to block with Javascript*/
+document.body.style.display='block'
 
 /*toggle light-mode*/
-
-let lightMode = false 
-lightMode = localStorage.getItem('light-mode') === 'true'; 
 
 switchToLightMode = ()=>{   
   root.style.setProperty('--primary-color', '#50af7a');
   root.style.setProperty('--secondary-color', '#7a50af');
   root.style.setProperty('--tertiary-color', '#af7a50');
+  root.style.setProperty('--text-color', 'black');
 }
 
 switchToDarkMode = ()=>{   
   root.style.setProperty('--primary-color', '#1a2a32');
   root.style.setProperty('--secondary-color', '#32281a');
   root.style.setProperty('--tertiary-color', '#321c1a');
+  root.style.setProperty('--text-color', 'white');
 }
+
+lightMode = localStorage.getItem('light-mode') === 'true'; 
 
 if(lightMode) {
   document.body.style.transition ='0s';
   toggleBtn.style.transition='transform 0s';
-  switchToLightMode(),
+  switchToLightMode()
   toggleBtn.classList.add('switched');
-}  
+} 
 
 
 
