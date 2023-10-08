@@ -4,13 +4,15 @@ const contactBtn=document.querySelector('#contact-link');
 const about=document.querySelector('.about');
 const projects=document.querySelector('.projects-container');
 const contact=document.querySelector('.contact-container');
-const toggleBtnCont= document.querySelector('.toggle-button-container');
-const toggleBtn= document.querySelector('.toggle-button');
-const root = document.querySelector(':root');
+const toggleBtnCont=document.querySelector('.toggle-button-container');
+const toggleBtn=document.querySelector('.toggle-button');
+const root=document.querySelector(':root');
 
 
-/*Initial display is set no none to avoid Dom flickering, then I set it to block with Javascript*/
-document.body.style.display='block'
+/*Initial display is set to none to avoid Dom flickering, then I set it to block with Javascript*/
+document.body.classList.remove('hidden');
+
+
 
 /*toggle light-mode*/
 
@@ -38,8 +40,7 @@ if(lightMode) {
 } 
 
 
-
-toggleBtnCont.addEventListener('click', ()=>{
+toggleBtnCont.addEventListener('click', ()=>{ 
 
   document.body.style.transition ='0.4s'
   toggleBtn.style.transition='transform 0.6s ease-in-out'
@@ -71,12 +72,12 @@ aboutBtn.addEventListener('click', ()=>{
       break; 
     case 2:
       slidefromLeft(-100,0,about);
-      slidefromLeft(-100,0,projects);
+      slidefromLeft(0,100,projects);
       sliderposition=1
       break; 
     case 3:
       slidefromLeft(-100,0,about);
-      slidefromLeft(-200,-100,contact);
+      slidefromLeft(0,100,contact);
       sliderposition=1
       break; 
   }
@@ -84,11 +85,11 @@ aboutBtn.addEventListener('click', ()=>{
 projectsBtn.addEventListener('click', ()=>{
   switch(sliderposition) {
     case 0:
-      slidefromRight(0,-100,projects);
+      slidefromRight(100,0,projects);
       sliderposition=2
       break;
     case 1:
-      slidefromRight(0,-100,projects);
+      slidefromRight(100,0,projects);
       slidefromRight(0,-100,about);
       sliderposition=2
       break; 
@@ -96,8 +97,8 @@ projectsBtn.addEventListener('click', ()=>{
     sliderposition=2
       break; 
     case 3:
-      slidefromLeft(-200,-100,projects);
-      slidefromLeft(-200,-100,contact);
+      slidefromLeft(-100,0,projects);
+      slidefromLeft(0,100,contact);
       sliderposition=2
       break; 
   }
@@ -105,17 +106,17 @@ projectsBtn.addEventListener('click', ()=>{
 contactBtn.addEventListener('click', ()=>{
   switch(sliderposition) {
     case 0:
-      slidefromRight(-100,-200,contact)
+      slidefromRight(100,0,contact)
       sliderposition=3
       break;
     case 1:
-      slidefromRight(-100,-200,contact)
+      slidefromRight(100,0,contact)
       slidefromRight(0,-100,about)
       sliderposition=3
       break; 
     case 2:
-      slidefromRight(-100,-200,contact);
-      slidefromRight(-100,-200,projects);
+      slidefromRight(100,0,contact);
+      slidefromRight(0,-100,projects);
       sliderposition=3
       break; 
     case 3:
