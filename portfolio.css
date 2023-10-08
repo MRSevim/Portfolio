@@ -135,6 +135,7 @@ p {
   width: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 .about {
   transform: translateX(-100%);
@@ -175,4 +176,28 @@ p {
 .contact {
   width: 300px;
   height: 300px;
+}
+@media (max-width: 750px) {
+  .glider-container {
+    height: 800px;
+  }
+  .about {
+    flex-direction: column;
+  }
+}
+@media (max-width: 500px) {
+  .skills,
+  .vision,
+  .projects,
+  .contact {
+    width: 90%;
+  }
+}
+@media (max-width: 400px) {
+  .glider-container {
+    height: 900px;
+  }
+  .navbar ul li {
+    margin: 0 15px;
+  }
 }
