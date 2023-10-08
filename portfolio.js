@@ -7,6 +7,7 @@ const contact=document.querySelector('.contact-container');
 const toggleBtnCont= document.querySelector('.toggle-button-container');
 const toggleBtn= document.querySelector('.toggle-button');
 const cssLink =document.querySelector('.light-mode-css-link'); 
+const root =document.querySelector(':root')
 
 
 /*toggle light-mode*/
@@ -14,23 +15,39 @@ const cssLink =document.querySelector('.light-mode-css-link');
 let lightMode = false 
 lightMode = localStorage.getItem('light-mode') === 'true'; 
 
-document.addEventListener('DOMContentLoaded',() =>{
-  if(lightMode) {
-    cssLink.href = 'lightmode.css';
-    toggleBtn.classList.add('switched');
-  }  })
+switchToLightMode = ()=>{   
+  root.style.setProperty('--primary-color', '#50af7a');
+  root.style.setProperty('--secondary-color', '#7a50af');
+  root.style.setProperty('--tertiary-color', '#af7a50');
+}
+
+switchToDarkMode = ()=>{   
+  root.style.setProperty('--primary-color', '#1a2a32');
+  root.style.setProperty('--secondary-color', '#32281a');
+  root.style.setProperty('--tertiary-color', '#321c1a');
+}
+
+if(lightMode) {
+  document.body.style.transition ='0s';
+  toggleBtn.style.transition='transform 0s';
+  switchToLightMode(),
+  toggleBtn.classList.add('switched');
+}  
+
 
 
 toggleBtnCont.addEventListener('click', ()=>{
- 
-  
+
+  document.body.style.transition ='0.4s'
+  toggleBtn.style.transition='transform 0.6s ease-in-out'
   toggleBtn.classList.toggle('switched');
+
   if (!lightMode){
-    cssLink.href = 'lightmode.css'
+    switchToLightMode()
     lightMode = true
   }
   else if(lightMode) {
-    cssLink.href = ''
+    switchToDarkMode()
     lightMode = false
   }
 

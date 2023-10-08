@@ -103,6 +103,11 @@ a {
   text-align: center;
   font-size: 1.2rem;
 }
+.profile-pic {
+  width: 200px;
+  border-radius: 50%;
+  border: 3px solid var(--tertiary-color);
+}
 
 /*Glider*/
 .glider-container {
