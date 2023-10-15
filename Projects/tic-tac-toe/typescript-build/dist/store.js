@@ -4,29 +4,28 @@ var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (
     return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
 };
 var _Store_instances, _Store_getState, _Store_saveState;
-const initialValue = {
+const initialState = {
     currentGameMoves: [],
     history: {
         currentRoundGames: [],
         allGames: [],
-    }
+    },
 };
 class Store extends EventTarget {
-    constructor(key, players) {
+    constructor(storageKey, players) {
         super();
         _Store_instances.add(this);
-        this.storageKey = key;
+        this.storageKey = storageKey;
         this.players = players;
     }
-    ;
     get stats() {
         const state = __classPrivateFieldGet(this, _Store_instances, "m", _Store_getState).call(this);
         return {
             playerWithStats: this.players.map((player) => {
-                const wins = state.history.currentRoundGames.filter(game => { var _a; return ((_a = game.status.winner) === null || _a === void 0 ? void 0 : _a.id) === player.id; }).length;
+                const wins = state.history.currentRoundGames.filter((game) => { var _a; return ((_a = game.status.winner) === null || _a === void 0 ? void 0 : _a.id) === player.id; }).length;
                 return Object.assign(Object.assign({}, player), { wins });
             }),
-            ties: state.history.currentRoundGames.filter(game => game.status.winner === null).length
+            ties: state.history.currentRoundGames.filter((game) => game.status.winner === null).length,
         };
     }
     get game() {
@@ -44,9 +43,11 @@ class Store extends EventTarget {
         ];
         let winner = null;
         for (const player of this.players) {
-            const selectedSquareIds = state.currentGameMoves.filter((move) => move.player.id === player.id).map((move) => move.squareId);
+            const selectedSquareIds = state.currentGameMoves
+                .filter((move) => move.player.id === player.id)
+                .map((move) => move.squareId);
             for (const pattern of winningPatterns) {
-                if (pattern.every(v => selectedSquareIds.includes(v))) {
+                if (pattern.every((v) => selectedSquareIds.includes(v))) {
                     winner = player;
                 }
             }
@@ -54,20 +55,20 @@ class Store extends EventTarget {
         return {
             moves: state.currentGameMoves,
             currentPlayer,
-            status: { isComplete: winner != null || state.currentGameMoves.length === 9,
-                winner }
+            status: {
+                isComplete: winner != null || state.currentGameMoves.length === 9,
+                winner,
+            },
         };
     }
-    ;
     playerMove(squareId) {
         const stateClone = structuredClone(__classPrivateFieldGet(this, _Store_instances, "m", _Store_getState).call(this));
         stateClone.currentGameMoves.push({
             squareId,
-            player: this.game.currentPlayer
+            player: this.game.currentPlayer,
         });
         __classPrivateFieldGet(this, _Store_instances, "m", _Store_saveState).call(this, stateClone);
     }
-    ;
     reset() {
         const stateClone = structuredClone(__classPrivateFieldGet(this, _Store_instances, "m", _Store_getState).call(this));
         const { status, moves } = this.game;
@@ -87,27 +88,24 @@ class Store extends EventTarget {
         stateClone.history.currentRoundGames = [];
         __classPrivateFieldGet(this, _Store_instances, "m", _Store_saveState).call(this, stateClone);
     }
-    ;
-    ;
 }
 _Store_instances = new WeakSet(), _Store_getState = function _Store_getState() {
     const item = window.localStorage.getItem(this.storageKey);
-    return item ? JSON.parse(item) : initialValue;
+    return item ? JSON.parse(item) : initialState;
 }, _Store_saveState = function _Store_saveState(stateOrFn) {
     const prevState = __classPrivateFieldGet(this, _Store_instances, "m", _Store_getState).call(this);
     let newState;
     switch (typeof stateOrFn) {
-        case 'function':
+        case "function":
             newState = stateOrFn(prevState);
             break;
-        case 'object':
+        case "object":
             newState = stateOrFn;
             break;
         default:
-            throw new Error('Invaild argument passed to saveState');
+            throw new Error("Invaild argument passed to saveState");
     }
     window.localStorage.setItem(this.storageKey, JSON.stringify(newState));
-    this.dispatchEvent(new Event('statechange'));
+    this.dispatchEvent(new Event("statechange"));
 };
 export default Store;
-;

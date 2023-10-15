@@ -24,86 +24,80 @@ class View {
         this.$.grid = __classPrivateFieldGet(this, _View_instances, "m", _View_qs).call(this, '[data-id="grid"]');
         this.$$.squares = __classPrivateFieldGet(this, _View_instances, "m", _View_qsAll).call(this, '[data-id="square"]');
         //UI-only event listeners
-        this.$.menuBtn.addEventListener('click', event => {
+        this.$.menuBtn.addEventListener("click", (event) => {
             __classPrivateFieldGet(this, _View_instances, "m", _View_toggleMenu).call(this);
         });
     }
-    ;
     render(game, stats) {
         const { playerWithStats, ties } = stats;
-        const { moves, currentPlayer, status: { isComplete, winner } } = game;
+        const { moves, currentPlayer, status: { isComplete, winner }, } = game;
         __classPrivateFieldGet(this, _View_instances, "m", _View_closeAll).call(this);
         __classPrivateFieldGet(this, _View_instances, "m", _View_clearMoves).call(this);
         __classPrivateFieldGet(this, _View_instances, "m", _View_updateScoreboard).call(this, playerWithStats[0].wins, playerWithStats[1].wins, ties);
         __classPrivateFieldGet(this, _View_instances, "m", _View_initializeMoves).call(this, moves);
         if (isComplete) {
-            __classPrivateFieldGet(this, _View_instances, "m", _View_openModal).call(this, winner ? `${winner.name} wins!` : 'Tie');
+            __classPrivateFieldGet(this, _View_instances, "m", _View_openModal).call(this, winner ? `${winner.name} wins!` : "Tie");
             return;
         }
-        ;
         __classPrivateFieldGet(this, _View_instances, "m", _View_setTurnIndicator).call(this, currentPlayer);
     }
     /**Register all the event listener */
     bindGameResetEvent(handler) {
-        this.$.resetBtn.addEventListener('click', handler);
-        this.$.modalBtn.addEventListener('click', handler);
+        this.$.resetBtn.addEventListener("click", handler);
+        this.$.modalBtn.addEventListener("click", handler);
     }
-    ;
     bindNewRoundEvent(handler) {
-        this.$.newRoundBtn.addEventListener('click', handler);
+        this.$.newRoundBtn.addEventListener("click", handler);
     }
-    ;
     bindPlayerMoveEvent(handler) {
-        __classPrivateFieldGet(this, _View_instances, "m", _View_delegate).call(this, this.$.grid, '[data-id="square"]', 'click', handler);
+        __classPrivateFieldGet(this, _View_instances, "m", _View_delegate).call(this, this.$.grid, '[data-id="square"]', "click", handler);
     }
-    ;
-    ;
-    ;
-    ;
 }
 _View_instances = new WeakSet(), _View_updateScoreboard = function _View_updateScoreboard(p1Wins, p2Wins, ties) {
-    this.$.p1Wins.innerText = `${p1Wins} wins`;
-    this.$.p2Wins.innerText = `${p2Wins} wins`;
-    this.$.ties.innerText = `${ties} ties`;
+    this.$.p1Wins.textContent = `${p1Wins} wins`;
+    this.$.p2Wins.textContent = `${p2Wins} wins`;
+    this.$.ties.textContent = `${ties} ties`;
 }, _View_openModal = function _View_openModal(message) {
-    this.$.modal.classList.remove('hidden');
-    this.$.modalText.innerText = message;
+    this.$.modal.classList.remove("hidden");
+    this.$.modalText.textContent = message;
 }, _View_closeAll = function _View_closeAll() {
     __classPrivateFieldGet(this, _View_instances, "m", _View_closeModal).call(this);
     __classPrivateFieldGet(this, _View_instances, "m", _View_closeMenu).call(this);
 }, _View_clearMoves = function _View_clearMoves() {
-    this.$$.squares.forEach(square => {
+    this.$$.squares.forEach((square) => {
         square.replaceChildren();
     });
 }, _View_initializeMoves = function _View_initializeMoves(moves) {
-    this.$$.squares.forEach(square => {
-        const existingMove = moves.find(move => move.squareId === +square.id);
+    this.$$.squares.forEach((square) => {
+        const existingMove = moves.find((move) => move.squareId === +square.id);
         if (existingMove) {
             __classPrivateFieldGet(this, _View_instances, "m", _View_handlePlayerMove).call(this, square, existingMove.player);
         }
     });
 }, _View_closeModal = function _View_closeModal() {
-    this.$.modal.classList.add('hidden');
+    this.$.modal.classList.add("hidden");
 }, _View_closeMenu = function _View_closeMenu() {
-    this.$.menuItems.classList.add('hidden');
-    this.$.menuBtn.classList.remove('border');
-    const icon = this.$.menuBtn.querySelector('i');
-    icon.classList.add('fa-chevron-down');
-    icon.classList.remove('fa-chevron-up');
+    this.$.menuItems.classList.add("hidden");
+    this.$.menuBtn.classList.remove("border");
+    //const icon = this.$.menuBtn.querySelector("i");
+    const icon = __classPrivateFieldGet(this, _View_instances, "m", _View_qs).call(this, "i", this.$.menuBtn);
+    icon.classList.add("fa-chevron-down");
+    icon.classList.remove("fa-chevron-up");
 }, _View_toggleMenu = function _View_toggleMenu() {
-    this.$.menuItems.classList.toggle('hidden');
-    this.$.menuBtn.classList.toggle('border');
-    const icon = this.$.menuBtn.querySelector('i');
-    icon.classList.toggle('fa-chevron-down');
-    icon.classList.toggle('fa-chevron-up');
+    this.$.menuItems.classList.toggle("hidden");
+    this.$.menuBtn.classList.toggle("border");
+    //const icon = this.$.menuBtn.querySelector("i");
+    const icon = __classPrivateFieldGet(this, _View_instances, "m", _View_qs).call(this, "i", this.$.menuBtn);
+    icon.classList.toggle("fa-chevron-down");
+    icon.classList.toggle("fa-chevron-up");
 }, _View_handlePlayerMove = function _View_handlePlayerMove(squareEl, player) {
-    const icon = document.createElement('i');
-    icon.classList.add('fa-solid', player.iconClass, player.colorClass);
+    const icon = document.createElement("i");
+    icon.classList.add("fa-solid", player.iconClass, player.colorClass);
     squareEl.replaceChildren(icon);
 }, _View_setTurnIndicator = function _View_setTurnIndicator(player) {
-    const icon = document.createElement('i');
-    const label = document.createElement('p');
-    icon.classList.add('fa-solid', player.colorClass, player.iconClass);
+    const icon = document.createElement("i");
+    const label = document.createElement("p");
+    icon.classList.add("fa-solid", player.colorClass, player.iconClass);
     label.classList.add(player.colorClass);
     label.innerText = `${player.name}, you're up!`;
     this.$.turn.replaceChildren(icon, label);
@@ -112,15 +106,18 @@ _View_instances = new WeakSet(), _View_updateScoreboard = function _View_updateS
         ? parent.querySelector(selector)
         : document.querySelector(selector);
     if (!el)
-        throw new Error('Could not find elements');
+        throw new Error("Could not find elements");
     return el;
 }, _View_qsAll = function _View_qsAll(selector) {
     const elList = document.querySelectorAll(selector);
     if (!elList)
-        throw new Error('Could not find elements');
+        throw new Error("Could not find elements");
     return elList;
 }, _View_delegate = function _View_delegate(el, selector, eventKey, handler) {
     el.addEventListener(eventKey, (event) => {
+        if (!(event.target instanceof Element)) {
+            throw new Error("Event Target not found");
+        }
         if (event.target.matches(selector)) {
             handler(event.target);
         }
