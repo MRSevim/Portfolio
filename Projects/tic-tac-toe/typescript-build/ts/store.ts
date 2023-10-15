@@ -1,4 +1,4 @@
-import type { Player, GameState, GameStatus, Move } from "./types.ts";
+import type { Player, GameState, GameStatus, Move } from "./types.js";
 
 type PlayerWithWins = Player & { wins: number };
 

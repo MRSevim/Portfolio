@@ -1,5 +1,5 @@
-import type { Move, Player } from "./types.ts";
-import type { DerivedGame, DerivedStats } from "./store.ts";
+import type { Move, Player } from "./types.js";
+import type { DerivedGame, DerivedStats } from "./store.js";
 
 export default class View {
   $: Record<string, Element> = {};

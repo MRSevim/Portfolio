@@ -1,6 +1,6 @@
 import View from "./view.js";
 import Store from "./store.js";
-import type { Player } from "./types.ts";
+import type { Player } from "./types.js";
 
 const players: Player[] = [
   {
