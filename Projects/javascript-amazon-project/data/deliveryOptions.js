@@ -32,15 +32,15 @@ export function getDeliveryOption(deliveryOptionId) {
 
 export function calculateDeliveryDate(deliveryOption) {
   let deliveryDate = dayjs();
-  let formatted = deliveryDate.format("dddd");
   let days = deliveryOption.deliveryDays;
 
   while (days > 0) {
+    deliveryDate = deliveryDate.add(1, "days");
+    let formatted = deliveryDate.format("dddd");
+
     if (!(formatted === "Saturday" || formatted === "Sunday")) {
       days--;
     }
-    deliveryDate = deliveryDate.add(1, "days");
-    formatted = deliveryDate.format("dddd");
   }
 
   const dateString = deliveryDate.format("dddd, MMMM D");
