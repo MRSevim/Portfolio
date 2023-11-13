@@ -7,17 +7,17 @@ const arr = [aboutBtn, projectsBtn, contactBtn];
 i = 0;
 
 aboutBtn.addEventListener("click", () => {
-  i = 1;
+  i = arr.indexOf(aboutBtn) + 1;
   leftSection.style.transform = `translateY(-${i * 100}%)`;
   addActive(aboutBtn, arr);
 });
 projectsBtn.addEventListener("click", () => {
-  i = 2;
+  i = arr.indexOf(projectsBtn) + 1;
   leftSection.style.transform = `translateY(-${i * 100}%)`;
   addActive(projectsBtn, arr);
 });
 contactBtn.addEventListener("click", () => {
-  i = 3;
+  i = arr.indexOf(contactBtn) + 1;
   leftSection.style.transform = `translateY(-${i * 100}%)`;
   addActive(contactBtn, arr);
 });
