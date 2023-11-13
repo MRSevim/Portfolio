@@ -3,6 +3,8 @@ const projectsBtn = document.querySelector("#projects-btn");
 const contactBtn = document.querySelector("#contact-btn");
 const leftSection = document.querySelector(".left");
 
+document.documentElement.classList.remove("hidden");
+
 aboutBtn.addEventListener("click", () => {
   leftSection.style.transform = `translateY(-100%)`;
   addActive(aboutBtn);
