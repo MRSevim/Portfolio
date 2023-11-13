@@ -3,36 +3,54 @@ const projectsBtn = document.querySelector("#projects-btn");
 const contactBtn = document.querySelector("#contact-btn");
 const leftSection = document.querySelector(".left");
 
-document.documentElement.classList.remove("hidden");
+const arr = [aboutBtn, projectsBtn, contactBtn];
+i = 0;
 
 aboutBtn.addEventListener("click", () => {
-  leftSection.style.transform = `translateY(-100%)`;
-  addActive(aboutBtn);
+  i = 1;
+  leftSection.style.transform = `translateY(-${i * 100}%)`;
+  addActive(aboutBtn, arr);
 });
 projectsBtn.addEventListener("click", () => {
-  leftSection.style.transform = `translateY(-200%)`;
-  addActive(projectsBtn);
+  i = 2;
+  leftSection.style.transform = `translateY(-${i * 100}%)`;
+  addActive(projectsBtn, arr);
 });
 contactBtn.addEventListener("click", () => {
-  leftSection.style.transform = `translateY(-300%)`;
-  addActive(contactBtn);
+  i = 3;
+  leftSection.style.transform = `translateY(-${i * 100}%)`;
+  addActive(contactBtn, arr);
 });
-const addActive = (element) => {
-  switch (element) {
-    case aboutBtn:
-      aboutBtn.classList.add("active");
-      projectsBtn.classList.remove("active");
-      contactBtn.classList.remove("active");
-      break;
-    case projectsBtn:
-      aboutBtn.classList.remove("active");
-      projectsBtn.classList.add("active");
-      contactBtn.classList.remove("active");
-      break;
-    case contactBtn:
-      aboutBtn.classList.remove("active");
-      projectsBtn.classList.remove("active");
-      contactBtn.classList.add("active");
-      break;
+
+document.body.addEventListener("wheel", (event) => {
+  if (0 <= i) {
+    if (event.deltaY === 100 && i < arr.length) {
+      i++;
+      addActive(arr[i - 1], arr);
+      leftSection.style.transform = `translateY(-${i * 100}%)`;
+    }
+    if (event.deltaY === -100 && 0 < i) {
+      i--;
+      addActive(arr[i - 1], arr);
+      leftSection.style.transform = `translateY(-${i * 100}%)`;
+    }
+    if (i === 0) {
+      arr[i].classList.remove("active");
+    }
+  }
+});
+
+const addActive = (element, array) => {
+  if (element) {
+    element.classList.add("active");
+    array.forEach((item) => {
+      if (item !== element) {
+        item.classList.remove("active");
+      }
+    });
+  } else {
+    array.forEach((item) => {
+      item.classList.remove("active");
+    });
   }
 };
