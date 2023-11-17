@@ -6,6 +6,9 @@
   margin: 0;
   padding: 0;
 }
+.hidden {
+  display: none;
+}
 /* Vulcan
 #131521
 
@@ -18,7 +21,6 @@ Fountain Blue
 San Marino
 #3E52AB
  */
-
 body {
   font-family: "Gabarito", cursive;
   height: 100vh;
@@ -57,7 +59,6 @@ a {
   left: 20%;
   top: 25%;
 }
-
 .inner-about-container,
 .inner-projects-container {
   width: 70%;
