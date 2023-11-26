@@ -54,3 +54,21 @@ const addActive = (element, array) => {
     });
   }
 };
+
+//Apply iframe when hovered
+const links = document.querySelectorAll(".projects >ul >li >a");
+links.forEach((link) => {
+  const iframe = document.createElement("iframe");
+  iframe.src = link.href;
+  iframe.style.height = "400px";
+  iframe.style.width = "600px";
+  iframe.style.backgroundColor = "white";
+
+  const parent = document.createElement("div");
+  parent.style.width = "600px";
+  parent.style.height = "400px";
+  parent.classList.add("visible-when-hovered");
+  parent.appendChild(iframe);
+
+  link.appendChild(parent);
+});
