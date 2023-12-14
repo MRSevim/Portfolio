@@ -56,7 +56,7 @@ const addActive = (element, array) => {
 };
 
 //Apply iframe when hovered
-const links = document.querySelectorAll(".projects >ul >li >a");
+const links = document.querySelectorAll(".project-link");
 links.forEach((link) => {
   const iframe = document.createElement("iframe");
   iframe.src = link.href;

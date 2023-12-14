@@ -85,10 +85,10 @@ a {
 .margin-bot {
   margin-bottom: 6px;
 }
-.projects a {
+.project-link {
   position: relative;
 }
-.projects a:hover::after {
+.project-link:hover::after {
   content: "";
   position: absolute;
   bottom: -2px;
@@ -96,6 +96,9 @@ a {
   width: 100%;
   height: 2px;
   background-color: #cedae1;
+}
+.external-link {
+  text-decoration: underline;
 }
 .fa-brands {
   transition: font-size 0.1s;
@@ -109,10 +112,10 @@ a {
 .visible-when-hovered {
   display: none;
 }
-.projects > ul > li > a {
+.project-link {
   position: relative;
 }
-.projects > ul > li > a:hover > .visible-when-hovered,
+.project-link:hover > .visible-when-hovered,
 .visible-when-hovered:hover {
   display: block;
   position: absolute;
