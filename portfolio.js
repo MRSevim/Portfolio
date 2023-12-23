@@ -5,6 +5,7 @@ const leftSection = document.querySelector(".left");
 
 const arr = [aboutBtn, projectsBtn, contactBtn];
 i = 0;
+document.documentElement.classList.remove("hidden");
 
 aboutBtn.addEventListener("click", () => {
   i = arr.indexOf(aboutBtn) + 1;
