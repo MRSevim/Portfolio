@@ -3,9 +3,12 @@ const projectsBtn = document.querySelector("#projects-btn");
 const contactBtn = document.querySelector("#contact-btn");
 const leftSection = document.querySelector(".left");
 
+window.addEventListener("load", () => {
+  document.documentElement.classList.remove("hidden");
+});
+
 const arr = [aboutBtn, projectsBtn, contactBtn];
 i = 0;
-document.documentElement.classList.remove("hidden");
 
 aboutBtn.addEventListener("click", () => {
   i = arr.indexOf(aboutBtn) + 1;
