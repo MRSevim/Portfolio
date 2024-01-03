@@ -14,15 +14,17 @@
     <div class="header">
       <div class="container">
         <div class="inner">
-          <a target="_blank" href="https://github.com/MRSevim/">
-            <i class="fa-brands fa-github fa-xl"></i>
-          </a>
-          <a
-            target="_blank"
-            href="https://www.linkedin.com/in/muhammed-ra%C5%9Fid-sevim/"
-          >
-            <i class="fa-brands fa-linkedin fa-xl"></i>
-          </a>
+          <div class="symbols">
+            <a target="_blank" href="https://github.com/MRSevim/">
+              <i class="fa-brands fa-github fa-xl"></i>
+            </a>
+            <a
+              target="_blank"
+              href="https://www.linkedin.com/in/muhammed-ra%C5%9Fid-sevim/"
+            >
+              <i class="fa-brands fa-linkedin fa-xl"></i>
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -48,7 +50,7 @@
             </p>
           </div>
           <div class="grid">
-            <div class="learned">
+            <div class="learned card">
               <h2>Learned</h2>
               <div class="inner-grid">
                 <div class="item">
@@ -81,7 +83,7 @@
                 </div>
               </div>
             </div>
-            <div class="learning">
+            <div class="learning card">
               <h2>Learning</h2>
               <div class="inner-grid">
                 <div class="item">
@@ -90,7 +92,7 @@
                 </div>
               </div>
             </div>
-            <div class="planning-to-learn">
+            <div class="planning-to-learn card">
               <h2>Planning to Learn</h2>
               <div class="inner-grid">
                 <div class="item">
@@ -121,7 +123,11 @@
           <h2>Projects</h2>
           <div class="grid">
             <div class="item">
-              <img src="images/amazon-clone-screenshot.png" alt="" />
+              <img
+                class="amazon-card"
+                src="images/amazon-clone-screenshot.png"
+                alt=""
+              />
               <div class="name-links">
                 <h3>JavaScript Amazon Clone (Work in progress)</h3>
                 <div class="links">
@@ -131,7 +137,7 @@
                   >
                     <i class="fa-brands fa-github fa-xl"></i>
                   </a>
-                  <a href="">
+                  <a class="amazon-view" href="javascript:;">
                     <i class="fas fa-eye fa-xl"></i>
                   </a>
                 </div>
@@ -140,19 +146,23 @@
                 <p>
                   This is a follow along project I am building together with
                   SuperSimpleDev youtube channel. I included this in my projects
-                  because it really helps me learn the fundamentals.
+                  because it really helped me learn the fundamentals.
                 </p>
               </div>
             </div>
             <div class="item">
-              <img src="images/vortex-screenshot.png" alt="" />
+              <img
+                class="vortex-card"
+                src="images/vortex-screenshot.png"
+                alt=""
+              />
               <div class="name-links">
                 <h3>Vortex (Angular 17)</h3>
                 <div class="links">
                   <a target="_blank" href="https://github.com/MRSevim/Vortex">
                     <i class="fa-brands fa-github fa-xl"></i>
                   </a>
-                  <a href="">
+                  <a class="vortex-view" href="javascript:;">
                     <i class="fas fa-eye fa-xl"></i>
                   </a>
                 </div>
@@ -161,7 +171,7 @@
                 <p>
                   This is my own project. It is a movie/series streaming service
                   built for desktop. I built it to get familiar with Angular
-                  framework. Although It has a lot of features that could be
+                  framework. Nevertheless It has a lot of features that could be
                   implemented and is by no means complete.
                 </p>
               </div>
@@ -171,7 +181,19 @@
       </div>
     </div>
     <div class="contact">
-      <div class="container"></div>
+      <div class="container">
+        <div class="inner-contact">
+          <p>
+            Contact me via
+            <a
+              target="_blank"
+              href="https://www.linkedin.com/in/muhammed-ra%C5%9Fid-sevim/"
+              >LinkedIn</a
+            >
+            or e-mail:lionrasit@gmail.com
+          </p>
+        </div>
+      </div>
     </div>
   </body>
   <script src="portfolio.js"></script>

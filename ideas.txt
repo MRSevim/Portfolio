@@ -1,6 +1,0 @@
--About: learned-learning-planning to learn sections
--technologies with name and logos
--project screenshot,name,description,github page(with logo)-live example(with live logo)
--I am looking for work.
- You can reach out to me via linkedIn or e-mail: (linkedin link and email adress)
--make it mobile responsive 

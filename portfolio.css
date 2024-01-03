@@ -16,6 +16,7 @@
   --quaternary-color: #3e52ab;
 }
 body {
+  position: relative;
   font-family: "Gabarito", cursive;
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
     url(images/starry-sky.jpg) no-repeat center center fixed;
@@ -80,10 +81,10 @@ a {
   margin-right: 15px;
   cursor: pointer;
 }
-
 /*Intro*/
 .intro {
   height: 100vh;
+  position: relative;
   display: flex;
   justify-content: center;
 }
@@ -94,6 +95,24 @@ a {
 .intro i {
   position: absolute;
   bottom: 10%;
+}
+.intro h2 {
+  transform: translateX(200px);
+  opacity: 0;
+  animation: moveCenter 0.3s ease-in-out;
+  animation-fill-mode: forwards;
+}
+.intro h1 {
+  transform: translateX(-200px);
+  opacity: 0;
+  animation: moveCenter 0.3s ease-in-out;
+  animation-fill-mode: forwards;
+}
+@keyframes moveCenter {
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 .intro p {
   position: absolute;
@@ -142,6 +161,13 @@ a {
   grid-auto-rows: minmax(75px, auto);
   gap: 10px;
 }
+.card {
+  transition: 0.2s ease-out;
+}
+.card:hover {
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  transform: translate3d(0, -5px, 0);
+}
 .about .item {
   display: flex;
   flex-direction: column;
@@ -166,16 +192,16 @@ a {
 }
 /*Projects*/
 .projects {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   position: relative;
   justify-content: center;
 }
 .projects .container {
-  position: absolute;
-  top: 25%;
   width: 100%;
   min-width: 300px;
+  margin-top: 100px;
+  margin-bottom: 100px;
 }
 .projects-inner {
   background-color: var(--primary-color);
@@ -197,6 +223,7 @@ a {
 }
 .projects .grid .item img {
   width: 90%;
+  cursor: pointer;
 }
 .projects .item {
   display: flex;
@@ -222,4 +249,24 @@ a {
 .projects img,
 .projects .name-links {
   margin-bottom: 10px;
+}
+/*Contact*/
+.contact {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 30px;
+  background-color: var(--secondary-color);
+  color: black;
+}
+@media (max-width: 475px) {
+  .contact {
+    height: 50px;
+  }
+}
+.contact p {
+  padding-top: 5px;
+}
+.contact a {
+  text-decoration: underline;
 }
