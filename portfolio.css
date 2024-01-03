@@ -161,13 +161,13 @@ a {
   grid-auto-rows: minmax(75px, auto);
   gap: 10px;
 }
-.card {
+/* .card {
   transition: 0.2s ease-out;
 }
 .card:hover {
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
   transform: translate3d(0, -5px, 0);
-}
+} */
 .about .item {
   display: flex;
   flex-direction: column;
