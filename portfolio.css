@@ -32,6 +32,15 @@ body {
 .container > * {
   margin: 0 30px;
 }
+@media (max-width: 400px) {
+  .container > * {
+    margin: 0 10px;
+  }
+}
+a {
+  text-decoration: none;
+  color: black;
+}
 /*Scrollbar*/
 *::-webkit-scrollbar {
   width: 16px;
@@ -71,6 +80,7 @@ body {
   margin-right: 15px;
   cursor: pointer;
 }
+
 /*Intro*/
 .intro {
   height: 100vh;
@@ -132,7 +142,7 @@ body {
   grid-auto-rows: minmax(75px, auto);
   gap: 10px;
 }
-.item {
+.about .item {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -153,4 +163,63 @@ body {
   color: black;
   padding: 15px;
   border-radius: 10px;
+}
+/*Projects*/
+.projects {
+  height: 100vh;
+  display: flex;
+  position: relative;
+  justify-content: center;
+}
+.projects .container {
+  position: absolute;
+  top: 25%;
+  width: 100%;
+  min-width: 300px;
+}
+.projects-inner {
+  background-color: var(--primary-color);
+  padding: 15px;
+
+  border-radius: 10px;
+}
+.projects .grid .item {
+  background-color: var(--secondary-color);
+  color: black;
+  padding: 15px;
+  border-radius: 10px;
+}
+.projects .grid {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+.projects .grid .item img {
+  width: 90%;
+}
+.projects .item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.name-links {
+  display: flex;
+  align-items: center;
+}
+.name-links h3 {
+  margin-right: 10px;
+}
+.links a {
+  margin-left: 10px;
+  cursor: pointer;
+}
+.links {
+  display: flex;
+  border-left: 2px solid black;
+}
+.projects img,
+.projects .name-links {
+  margin-bottom: 10px;
 }
