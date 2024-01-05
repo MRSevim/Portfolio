@@ -4,14 +4,14 @@ import {
   calculateCartQuantity,
   updateQuantity,
   updateDeliveryOption,
-} from "../../data/cart.js";
-import { products, getProduct } from "../../data/products.js";
+} from "../data/cart.js";
+import { products, getProduct } from "../data/products.js";
 import { formatCurrency } from "../utils/money.js";
 import {
   deliveryOptions,
   getDeliveryOption,
   calculateDeliveryDate,
-} from "../../data/deliveryOptions.js";
+} from "../data/deliveryOptions.js";
 import { renderPaymentSummary } from "./paymenySummary.js";
 import { renderCheckoutHeader } from "./checkoutHeader.js";
 
@@ -42,12 +42,12 @@ export function renderOrderSummary() {
       />
 
       <div class="cart-item-details">
-        <div class="product-name">
+        <div class="product-name js-product-name${matchingProduct.id}">
           ${matchingProduct.name}
         </div>
-        <div class="product-price">$${formatCurrency(
-          matchingProduct.priceCents
-        )}</div>
+        <div class="product-price js-product-price-${
+          matchingProduct.id
+        }">$${formatCurrency(matchingProduct.priceCents)}</div>
         <div class="product-quantity">
           <span> Quantity: <span class="quantity-label js-quantity-label-${
             matchingProduct.id
@@ -61,9 +61,9 @@ export function renderOrderSummary() {
           <span class="save-quantity-link link-primary js-save-link" data-product-id="${
             matchingProduct.id
           }">Save</span>
-          <span class="delete-quantity-link link-primary js-delete-link" data-product-id="${
+          <span class="delete-quantity-link link-primary js-delete-link js-delete-link-${
             matchingProduct.id
-          }">
+          }" data-product-id="${matchingProduct.id}">
             Delete
           </span>
         </div>
@@ -93,13 +93,17 @@ export function renderOrderSummary() {
       const isChecked = deliveryOption.id === cartItem.deliveryOptionId;
 
       html += `
-        <div class="delivery-option js-delivery-option"
+        <div class="delivery-option js-delivery-option js-delivery-option-${
+          matchingProduct.id
+        }-${deliveryOption.id}"
         data-product-id='${matchingProduct.id}'
         data-delivery-option-id='${deliveryOption.id}'>
             <input
               type="radio"
               ${isChecked ? "checked" : ""}
-              class="delivery-option-input"
+              class="delivery-option-input js-delivery-option-input-${
+                matchingProduct.id
+              }-${deliveryOption.id}"
               name="delivery-option-${matchingProduct.id}"
             />
             <div>
