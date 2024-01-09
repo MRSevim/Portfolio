@@ -102,6 +102,7 @@ amazonBtn.addEventListener("click", () => {
     }, 500);
   });
 });
+
 amazonCard.addEventListener("click", () => {
   onCardClick("amazon").then((cardClone) => {
     setTimeout(() => {
