@@ -48,36 +48,78 @@ const onCardClick = async (param) => {
   cardClone.style.left = left + "px";
   cardClone.style.width = width + "px";
   cardClone.style.height = height + "px";
-  // hide the original card with opacity
-  card.style.opacity = "0";
+  cardClone.style.zIndex = "101";
+
   // add card to the same container
   card.parentNode.appendChild(cardClone);
+
   // fade the content away
   fadeContent(cardClone, "0").then(() => {
     [...cardClone.children].forEach((child) => (child.style.display = "none"));
   });
   // expand the clone card
   await toggleExpansion(cardClone, {
-    top: 0,
+    top: "30px",
     left: 0,
     width: "100vw",
     height: "100vh",
   });
-  window.location.href =
+
+  let child =
     param === "amazon"
-      ? "Projects/javascript-amazon-project/amazon.html"
-      : "https://mrsevim.github.io/Vortex/homepage";
+      ? `<iframe src="Projects/javascript-amazon-project/amazon.html"
+      ></iframe>`
+      : `<iframe src="https://mrsevim.github.io/Vortex/homepage"
+      ></iframe>`;
+
+  const navigation =
+    '<nav class=navigation><div class="container"><a class="homepage" href="javascript:;">Back to Portfolio</a></div></nav>';
+
+  const project = document.createElement("div");
+  project.classList.add("project");
+
+  project.innerHTML = navigation + child;
+
+  document.body.appendChild(project);
+  document.body.style.overflow = "hidden";
+
+  const homepageLink = document.querySelectorAll(".homepage");
+
+  homepageLink.forEach((link) => {
+    link.addEventListener("click", () => {
+      project.remove();
+      document.body.style.overflow = "auto";
+    });
+  });
+
+  return cardClone;
 };
 
 amazonBtn.addEventListener("click", () => {
-  onCardClick("amazon");
+  onCardClick("amazon").then((cardClone) => {
+    setTimeout(() => {
+      cardClone.remove();
+    }, 500);
+  });
 });
 amazonCard.addEventListener("click", () => {
-  onCardClick("amazon");
+  onCardClick("amazon").then((cardClone) => {
+    setTimeout(() => {
+      cardClone.remove();
+    }, 500);
+  });
 });
 vortexBtn.addEventListener("click", () => {
-  onCardClick("vortex");
+  onCardClick("vortex").then((cardClone) => {
+    setTimeout(() => {
+      cardClone.remove();
+    }, 500);
+  });
 });
 vortexCard.addEventListener("click", () => {
-  onCardClick("vortex");
+  onCardClick("vortex").then((cardClone) => {
+    setTimeout(() => {
+      cardClone.remove();
+    }, 500);
+  });
 });
