@@ -102,7 +102,6 @@ amazonBtn.addEventListener("click", () => {
     }, 500);
   });
 });
-
 amazonCard.addEventListener("click", () => {
   onCardClick("amazon").then((cardClone) => {
     setTimeout(() => {
@@ -110,6 +109,7 @@ amazonCard.addEventListener("click", () => {
     }, 500);
   });
 });
+
 vortexBtn.addEventListener("click", () => {
   onCardClick("vortex").then((cardClone) => {
     setTimeout(() => {
