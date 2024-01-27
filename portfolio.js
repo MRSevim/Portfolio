@@ -2,8 +2,8 @@ window.addEventListener("load", () => {
   document.body.classList.remove("hidden");
 });
 
-const amazonBtn = document.querySelector(".amazon-view");
-const amazonCard = document.querySelector(".amazon-card");
+const amazonBtn = document.querySelector(".flick-view");
+const amazonCard = document.querySelector(".flick-card");
 const vortexBtn = document.querySelector(".vortex-view");
 const vortexCard = document.querySelector(".vortex-card");
 
@@ -62,12 +62,12 @@ const onCardClick = async (param) => {
     top: "30px",
     left: 0,
     width: "100vw",
-    height: "100vh",
+    height: "calc(100vh - 30px)",
   });
 
   let child =
     param === "amazon"
-      ? `<iframe src="Projects/javascript-amazon-project/amazon.html"
+      ? `<iframe src="https://mrsevim.github.io/Flick/"
       ></iframe>`
       : `<iframe src="https://mrsevim.github.io/Vortex/homepage"
       ></iframe>`;
