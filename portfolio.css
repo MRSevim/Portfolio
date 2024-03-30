@@ -96,6 +96,9 @@ a {
   margin-right: 15px;
   cursor: pointer;
 }
+.header i:hover {
+  transform: scale(1.2);
+}
 /*Intro*/
 .intro {
   height: 100vh;
@@ -266,17 +269,6 @@ a {
 .projects img,
 .projects .name-links {
   margin-bottom: 10px;
-}
-/*Contact*/
-.contact {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  background-color: var(--secondary-color);
-  color: black;
-}
-.contact p {
-  padding: 20px;
 }
 /*Project links*/
 iframe {
