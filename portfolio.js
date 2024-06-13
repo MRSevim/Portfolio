@@ -2,10 +2,8 @@ window.addEventListener("load", () => {
   document.body.classList.remove("hidden");
 });
 
-const amazonBtn = document.querySelector(".flick-view");
-const amazonCard = document.querySelector(".flick-card");
-const vortexBtn = document.querySelector(".vortex-view");
-const vortexCard = document.querySelector(".vortex-card");
+const flickBtn = document.querySelector(".flick-view");
+const flickCard = document.querySelector(".flick-card");
 
 const toggleExpansion = (element, to, duration = 350) => {
   return new Promise((res) => {
@@ -37,7 +35,7 @@ const fadeContent = (element, opacity, duration = 300) => {
 };
 
 const onCardClick = async (param) => {
-  const card = param === "amazon" ? amazonCard : vortexCard;
+  const card = param === "flick" ? flickCard : null;
   const cardClone = card.cloneNode(true);
 
   // get the location of the card in the view
@@ -66,11 +64,10 @@ const onCardClick = async (param) => {
   });
 
   let child =
-    param === "amazon"
-      ? `<iframe src="https://mrsevim.github.io/Flick/"
+    param === "flick"
+      ? `<iframe src="https://www.flickarticles.com/"
       ></iframe>`
-      : `<iframe src="https://mrsevim.github.io/Vortex/homepage"
-      ></iframe>`;
+      : ``;
 
   const navigation =
     '<nav class=navigation><div class="container"><a class="homepage" href="javascript:;">Back to Portfolio</a></div></nav>';
@@ -95,30 +92,15 @@ const onCardClick = async (param) => {
   return cardClone;
 };
 
-amazonBtn.addEventListener("click", () => {
-  onCardClick("amazon").then((cardClone) => {
+flickBtn.addEventListener("click", () => {
+  onCardClick("flick").then((cardClone) => {
     setTimeout(() => {
       cardClone.remove();
     }, 500);
   });
 });
-amazonCard.addEventListener("click", () => {
-  onCardClick("amazon").then((cardClone) => {
-    setTimeout(() => {
-      cardClone.remove();
-    }, 500);
-  });
-});
-
-vortexBtn.addEventListener("click", () => {
-  onCardClick("vortex").then((cardClone) => {
-    setTimeout(() => {
-      cardClone.remove();
-    }, 500);
-  });
-});
-vortexCard.addEventListener("click", () => {
-  onCardClick("vortex").then((cardClone) => {
+flickCard.addEventListener("click", () => {
+  onCardClick("flick").then((cardClone) => {
     setTimeout(() => {
       cardClone.remove();
     }, 500);

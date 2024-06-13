@@ -157,6 +157,11 @@ a {
   animation: moveDown 1s infinite;
 }
 /*About*/
+.at-break {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
 .about {
   height: 100vh;
   display: flex;
