@@ -231,30 +231,40 @@ a {
 }
 .projects-inner {
   background-color: var(--primary-color);
+  display: flex;
+  align-items: center;
   padding: 15px;
   border-radius: 10px;
 }
-.projects .grid .item {
+@media (max-width: 700px) {
+  .projects-inner {
+    flex-direction: column;
+  }
+}
+.projects h2 {
+  font-size: 40px;
+  text-align: center;
+  flex: 40%;
+}
+.projects .item {
   background-color: var(--secondary-color);
   color: black;
   padding: 15px;
   border-radius: 10px;
 }
-.projects .grid {
-  margin-top: 20px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+.projects .projects-list {
+  flex: 60%;
 }
-.projects .grid .item img {
+.projects .item img {
   width: 90%;
-  cursor: pointer;
 }
 .projects .item {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 .name-links {
   display: flex;
