@@ -1,38 +1,37 @@
 let currentSlide = 1;
 const projectItems = document.querySelectorAll(".projects .item");
-const goUpButton = document.querySelector(".goUpButton");
-const goDownButton = document.querySelector(".goDownButton");
+const carousel = document.querySelector(".carousel");
+const goLeftButton = document.querySelector(".goLeftButton");
+const goRightButton = document.querySelector(".goRightButton");
 
 const updateButtonDisplays = (currentSlide) => {
   if (currentSlide === 1) {
-    goUpButton.classList.add("disabled");
+    goLeftButton.classList.add("disabled");
   } else {
-    goUpButton.classList.remove("disabled");
+    goLeftButton.classList.remove("disabled");
   }
   if (currentSlide === projectItems.length) {
-    goDownButton.classList.add("disabled");
+    goRightButton.classList.add("disabled");
   } else {
-    goDownButton.classList.remove("disabled");
+    goRightButton.classList.remove("disabled");
   }
 };
 
-goUpButton.addEventListener("click", () => {
+goLeftButton.addEventListener("click", () => {
   if (currentSlide > 1) {
     currentSlide--;
 
-    projectItems[currentSlide - 1].classList.remove("hidden");
-    projectItems[currentSlide].classList.add("hidden");
+    carousel.style.right = `${(currentSlide - 1) * 100}%`;
 
     updateButtonDisplays(currentSlide);
   }
 });
 
-goDownButton.addEventListener("click", () => {
+goRightButton.addEventListener("click", () => {
   if (currentSlide < projectItems.length) {
     currentSlide++;
-    console.log(currentSlide);
-    projectItems[currentSlide - 1].classList.remove("hidden");
-    projectItems[currentSlide - 2].classList.add("hidden");
+
+    carousel.style.right = `${(currentSlide - 1) * 100}%`;
 
     updateButtonDisplays(currentSlide);
   }
