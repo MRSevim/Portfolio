@@ -157,11 +157,6 @@ a {
   animation: moveDown 1s infinite;
 }
 /*About*/
-.at-break {
-  display: flex;
-  justify-content: center;
-  margin-top: 10px;
-}
 .about {
   min-height: 100vh;
   display: flex;
@@ -229,23 +224,38 @@ a {
   }
 }
 .projects-inner {
+  display: flex;
   background-color: var(--primary-color);
   padding: 15px;
   border-radius: 10px;
 }
 @media (max-width: 700px) {
   .projects-inner {
+    flex-direction: column;
     padding-right: 0px;
     padding-left: 0px;
   }
 }
+.projects-left {
+  flex: 30%;
+}
+.projects-list {
+  margin: 10px 30px;
+  line-height: 1.4;
+}
+.list-item {
+  font-size: 20px;
+  cursor: pointer;
+}
+.list-item .fa {
+  margin-left: 10px;
+}
+.list-item.active > .fa {
+  display: inline-block;
+}
 .projects h2 {
   font-size: 40px;
   text-align: center;
-}
-.projects-list {
-  display: flex;
-  align-items: center;
 }
 .project-nav-button {
   cursor: pointer;
@@ -262,6 +272,7 @@ a {
   width: 90%;
 }
 .carousel-container {
+  flex: 70%;
   overflow: hidden;
 }
 .carousel {
@@ -270,19 +281,22 @@ a {
   right: 0;
   transition: right 0.5s ease-in-out;
 }
-.projects .item {
+.projects .item-container {
+  padding: 10px;
   flex: 0 0 auto;
   width: 100%;
+}
+.projects .item {
   background-color: var(--secondary-color);
   color: black;
   padding: 15px;
+  height: 100%;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   text-align: center;
-  margin-top: 10px;
-  margin-bottom: 10px;
 }
 .name-links {
   display: flex;
