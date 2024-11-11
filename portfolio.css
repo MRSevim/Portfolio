@@ -205,6 +205,10 @@ a {
   padding: 15px;
   border-radius: 10px;
 }
+.at-a-break {
+  padding: 20px;
+  text-align: center;
+}
 /*Projects*/
 .projects {
   min-height: 100vh;
