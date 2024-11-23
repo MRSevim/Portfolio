@@ -103,16 +103,30 @@ a {
 .intro {
   height: 100vh;
   position: relative;
+  overflow: hidden;
   display: flex;
   justify-content: center;
 }
 .intro .container {
   position: absolute;
+  display: flex;
+  align-items: center;
   top: 25%;
+}
+.intro img {
+  margin-bottom: 20px;
+  width: 200px;
+  border-radius: 50%;
 }
 @media (max-width: 400px) {
   .intro .container > * {
     margin: 0 20px;
+  }
+}
+@media (max-width: 700px) {
+  .intro .container {
+    flex-direction: column;
+    text-align: center;
   }
 }
 .intro i {
@@ -125,7 +139,8 @@ a {
   animation: moveCenter 0.3s ease-in-out;
   animation-fill-mode: forwards;
 }
-.intro h1 {
+.intro h1,
+.intro img {
   transform: translateX(-200px);
   opacity: 0;
   animation: moveCenter 0.3s ease-in-out;
@@ -168,13 +183,14 @@ a {
 }
 .about-inner {
   background-color: var(--primary-color);
-  padding: 15px;
+  padding: 30px;
+  font-size: 1.2rem;
   border-radius: 10px;
 }
 .about .grid {
   margin-top: 20px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 20px;
 }
 .inner-grid {
