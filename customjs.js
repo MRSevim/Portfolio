@@ -1,15 +1,17 @@
 const projectItems = document.querySelectorAll(".projects .item");
-const carousel = document.querySelector(".carousel");
-const projectsList = document.querySelectorAll(".projects-list .list-item");
 
-projectsList.forEach((listItem) => {
-  listItem.addEventListener("click", () => {
-    projectsList.forEach((item) => item.classList.remove("active"));
+function checkItemsInView() {
+  projectItems.forEach((item) => {
+    const rect = item.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
 
-    const index = Array.prototype.indexOf.call(projectsList, listItem);
-
-    carousel.style.right = `${index * 100}%`;
-
-    listItem.classList.add("active");
+    // Check if the item is in the viewport (with a margin of 100px before it enters the viewport)
+    if (rect.top < windowHeight - 100) {
+      item.classList.add("animate");
+    }
   });
+}
+
+window.addEventListener("scroll", () => {
+  requestAnimationFrame(checkItemsInView);
 });
