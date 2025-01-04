@@ -136,8 +136,9 @@ a i:hover {
   align-items: center;
 }
 @media (max-width: 500px) {
-  .bottom {
-    display: none;
+  .intro > .container {
+    padding-top: 100px;
+    padding-bottom: 200px;
   }
 }
 .intro .fa-chevron-down {
