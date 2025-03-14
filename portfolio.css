@@ -15,6 +15,9 @@ body .hidden.hidden {
   --tertiary-color: #67a6be;
   --quaternary-color: #3e52ab;
 }
+html {
+  overflow-x: hidden;
+}
 body {
   overflow-x: hidden;
   position: relative;
