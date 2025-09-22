@@ -249,7 +249,8 @@ a i:hover {
   flex-direction: column;
   font-size: 1.2rem;
 }
-.projects .item img {
+.projects .item img,
+.projects .item video {
   flex: 2;
   max-width: 40%;
   height: auto; /* Maintain aspect ratio */
@@ -258,7 +259,8 @@ a i:hover {
   .projects .item.item {
     flex-direction: column;
   }
-  .projects .item img {
+  .projects .item img,
+  .projects .item video {
     max-width: 100%;
   }
 }
