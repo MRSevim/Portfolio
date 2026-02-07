@@ -190,6 +190,10 @@ a i:hover {
   display: flex;
   gap: 40px;
 }
+.tech-section .single {
+  display:flex;
+  flex-direction: column;
+}
 .tech-section .item {
   display: flex;
   gap: 10px;
